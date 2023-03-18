@@ -1,0 +1,71 @@
+html{
+  background-image: linear-gradient(to right,#D65BCA, #21D190);
+  background-size: cover;
+  font-size: 62.5%;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+}
+h1{
+  font-size: 4.2rem;
+  color:#333;
+  font-weight: 600;
+}
+h2{
+  font-size: 3.8rem;
+  font-weight: 500;
+  color: #333;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.container{
+  width:60%;
+  margin:0 auto;
+  padding:0;
+}
+.logo{
+  width:10rem;
+  height:10rem;
+  text-align: left;
+  margin-left: 2rem;
+}
+.tasks{
+  margin-top: 4.8rem;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3rem;
+  margin-bottom: 3rem;
+
+}
+.task{
+  background-color:#fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:2.8rem;
+  width:80%;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+  
+
+
+}
+.task-col{
+
+  display: flex;
+  flex-direction: column;
+  gap:0.6rem;
+  align-items: center;
+  justify-content: space-around;
+  padding:0.4rem;
+  background-color: #5dd9e2;
+
+}
+a{
+  text-decoration: none;
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
