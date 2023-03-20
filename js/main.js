@@ -1,10 +1,11 @@
-const addTask = document.getElementById("addButton");
-const tasksTodo = document.getElementById("toDotasks");
-const el = document.createElement('div');
-el.classList.add("task");
-el.innerHTML="new task"
-el.innerHTML=parseInt()
-addTask.addEventListener('click', addTask);
-function addTask() {
-  tasksTodo.appendChild("el");
+const addTaskbtn = document.getElementById("addButton");
+
+// let el = document.createElement('li');
+// el.className="task";
+// el.textContent="new task";
+
+addTaskbtn.addEventListener('click',addTask);
+function addTask(e) {
+  const tasksTodo = document.querySelector(".toDotasks");
+  tasksTodo.insertAdjacentHTML('beforeend',`<li class="task" draggable="true">last</li>`)
 }

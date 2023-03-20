@@ -19,6 +19,9 @@ h2{
   align-items: center;
   justify-content: center;
 }
+ul{
+  list-style: none;
+}
 .container{
   width:60%;
   margin:0 auto;
@@ -44,7 +47,7 @@ h2{
   display:flex;
   align-items: center;
   justify-content: center;
-  height:2.8rem;
+  height:100%;
   width:80%;
   font-size: 2.4rem;
   font-weight: 500;
@@ -60,7 +63,7 @@ h2{
   gap:0.6rem;
   align-items: center;
   justify-content: space-around;
-  padding:0.4rem;
+  padding:0.8rem;
   background-color: #5dd9e2;
 
 }
@@ -68,4 +71,11 @@ a{
   text-decoration: none;
   font-size: 2.4rem;
   line-height: 1.2;
+ 
+}
+.button{
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
