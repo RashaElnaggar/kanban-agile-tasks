@@ -42,7 +42,7 @@ ul{
 
 }
 .task{
-  background-color:#fff;
+  background-color:#333;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display:flex;
   align-items: center;
@@ -71,11 +71,39 @@ a{
   text-decoration: none;
   font-size: 2.4rem;
   line-height: 1.2;
- 
+  text-align: right;
+  width:3.6rem;
+   height: 2.4rem;
+   background-color: #da4141;
 }
 .button{
    cursor: pointer;
    display: flex;
    align-items: center;
    justify-content: center;
+  
+}
+.addNewtask{
+cursor: pointer;
+background-color: aqua;
+height: 8rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+.NewTask{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.2rem;
+}
+p{
+font-size: 1.2rem;
+padding:0.2rem;
+font-weight: 600;
+text-align: center;
+
+width:100% ;
+height:2rem;
 }
