@@ -77,7 +77,9 @@ function dragTasks(){
   task.style.opacity="1";
   this.style.background="#fff";
    this.style.color = "#fff";
-    localStorage.setItem("items", JSON.stringify([JSON.parse(localStorage.getItem("items"))]));
+  //  localStorage.setItem("items", JSON.stringify([...JSON.parse(localStorage.getItem("items") || "[]"),
+  //    { taskInput: taskInput.value }]));
+   updateItemsjson();
    makeJson();
    restoreJason();
 
@@ -88,7 +90,35 @@ function dragTasks(){
   });
   
 }
-
+function updateItemsjson(){
+  let items = [];
+  console.log(document.querySelectorAll(".task").length);
+  for(var i=0; i<document.querySelectorAll(".task").length; i++){
+    divs.push(items[i].innerHTML);
+  }
+  localStorage.setItem("items", JSON.stringify(items));
+  
+}
+function restoreItemsjson() {
+  // let taskstodo = document.querySelectorAll(".task");
+  let items = JSON.parse(localStorage.getItem("items"));
+  items.forEach(item => {
+    tasksTodo.innerHTML += `
+    <li class="task">
+      <p>${item.}</p>
+      <div class="icons">
+        <i class="fa-sharp fa-solid fa-pencil" ></i>
+        <i class="fa-regular fa-trash-can"     ></i>
+      </div>
+    </li> 
+    `;
+  })
+  // for(var i = 0; i<taskstodo.length; i++){
+  //  taskstodo[i].innerHTML = items[i];
+  //   console.log(items[i]);
+}
+console.log(divs);
+}
 
 function makeJson() {
   let divs = [];
@@ -101,14 +131,16 @@ function makeJson() {
 
 }
 function restoreJason() {
-
+  
   let divs = JSON.parse(localStorage.getItem("divs"));
   for(var i = 0; i<shapes.length; i++){
     shapes[i].innerHTML = divs[i];
     console.log(shapes[i]);
 }
-console.log(divs);
+  console.log(divs);
+  restoreItemsjson();
 }
+
 // restoreJason();
 
 function loadTodoTasks() {
