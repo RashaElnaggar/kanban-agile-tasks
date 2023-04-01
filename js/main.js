@@ -10,29 +10,28 @@ var shapes = sections.querySelectorAll("div[class='section']");
 // let el = document.createElement('li');
 // el.className="task";
 // el.textContent="new task";
-
+window.onload = restoreJason;
 addTaskbtn.addEventListener('click',function(e){
   e.preventDefault();
-  makeJson();
  var name=Taskinput.value;
  console.log(name);
  if(name!="") {
 //  tasksTodo.insertAdjacentHTML("beforeend",`<li class="task" draggable="true">${name}</li>`);
 // tasksTodo.innerHTML += `<li class="task" draggable="true">${name}</li>`;
 tasksTodo.innerHTML +=`
-<div class="task">
+<li class="task">
 <p>${name}</p>
 <div class="icons">
    <i class="fa-sharp fa-solid fa-pencil" ></i>
    <i class="fa-regular fa-trash-can"     ></i>
 </div>
-</div> 
+</li> 
 `;
 console.log(tasksTodo.innerHTML );
    console.log("new task added");
   
    Taskinput.value = "";
-  //  makeJson(); 
+   makeJson(); 
 }
 dragTasks(); 
 });
@@ -99,4 +98,3 @@ function restoreJason() {
 console.log(divs);
 }
 // restoreJason();
- window.onload = restoreJason;
