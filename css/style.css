@@ -42,16 +42,19 @@ ul{
 
 }
 .task{
-  background-color:#333;
+  background-color:#deebd6;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  height:100%;
-  width:80%;
+
+  height:4rem;
+  width:90%;
   font-size: 2.4rem;
   font-weight: 500;
   line-height: 1.2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
   
 
 
@@ -83,6 +86,16 @@ a{
    justify-content: center;
   
 }
+input[type = "text"]{
+  padding: 1rem;
+  border: none;
+  outline: none;
+  width: 80%;
+  border-radius: 5px;
+ letter-spacing: 1px;
+ font-size: 1.4rem;
+ text-transform: capitalize;
+}
 .addNewtask{
 cursor: pointer;
 background-color: aqua;
@@ -108,5 +121,16 @@ width:100% ;
 height:2rem;
 }
 .section{
+  
+}
+i{
+  font-size: 1.2rem;
+  margin: 0 10px;
+  cursor: pointer;
+ color: rgb(16, 16, 184);
+
+}
+i:hover{
+  color:rgb(205, 43, 226) ;
   
 }

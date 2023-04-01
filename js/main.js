@@ -3,24 +3,39 @@ const Taskinput=document.getElementById("taskName");
 const tasksTodo = document.querySelector(".toDotasks");
 const addSection=document.querySelector(".addNewtask");
 let drag=null;
+// var divs=JSON.parse(localStorage.getItem("divs"))|| [];
 
+const sections = document.getElementById("sections");
+var shapes = sections.querySelectorAll("div[class='section']");
 // let el = document.createElement('li');
 // el.className="task";
 // el.textContent="new task";
 
-addTaskbtn.addEventListener('click',addTask);
-function addTask() {
+addTaskbtn.addEventListener('click',function(e){
+  e.preventDefault();
+  makeJson();
  var name=Taskinput.value;
  console.log(name);
  if(name!="") {
 //  tasksTodo.insertAdjacentHTML("beforeend",`<li class="task" draggable="true">${name}</li>`);
-tasksTodo.innerHTML += `<li class="task" draggable="true">${name}</li>`;
-   Taskinput.value = "";
+// tasksTodo.innerHTML += `<li class="task" draggable="true">${name}</li>`;
+tasksTodo.innerHTML +=`
+<div class="task">
+<p>${name}</p>
+<div class="icons">
+   <i class="fa-sharp fa-solid fa-pencil" ></i>
+   <i class="fa-regular fa-trash-can"     ></i>
+</div>
+</div> 
+`;
+console.log(tasksTodo.innerHTML );
    console.log("new task added");
+  
+   Taskinput.value = "";
+  //  makeJson(); 
 }
-
-dragTasks();
-}
+dragTasks(); 
+});
 function dragTasks(){
   let tasks=document.querySelectorAll(".task");
   tasks.forEach(task=>{
@@ -45,12 +60,14 @@ function dragTasks(){
   })
  taskcol.addEventListener('drop',function(){
   taskcol.append(drag);
+  task.style.opacity="1";
   this.style.background="#fff";
    this.style.color = "#fff";
    makeJson();
 });
- });
+ }); 
 });
+
 }
 // document.addEventListener('drop', function(event){
 //   event.preventDefault();
@@ -60,12 +77,10 @@ function dragTasks(){
 //   localStorage.setItem('section2', JSON.stringify(document.getElementById("inProgress")).innerHTML);
 //   localStorage.setItem('section3', JSON.stringify(document.getElementById("completed")));
 // });
-window.onload = restoreJason;
+
 
 function makeJson() {
-  const sections = document.getElementById("sections");
-  var shapes = sections.querySelectorAll("div[class='section']");
-  var divs = [];
+  let divs = [];
   console.log(shapes.length);
   for(var i=0; i<shapes.length; i++){
     // divs[shapes[i].getAttribute('innerHTML')] = shapes[i].innerHTML;
@@ -75,11 +90,13 @@ function makeJson() {
   localStorage.setItem("divs", JSON.stringify(divs));
 }
 function restoreJason() {
-  var divs = JSON.parse(localStorage.getItem("divs"));
-  const sections = document.getElementById("sections");
-  var shapes = sections.querySelectorAll("div[class='section']");
+  let divs = JSON.parse(localStorage.getItem("divs"));
+  // var divs = JSON.parse(localStorage.getItem("divs"));
   for(var i = 0; i<shapes.length; i++){
     shapes[i].innerHTML = divs[i];
+    console.log(shapes[i]);
 }
 console.log(divs);
 }
+// restoreJason();
+ window.onload = restoreJason;
