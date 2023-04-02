@@ -3,31 +3,33 @@ const Taskinput=document.getElementById("taskName");
 const tasksTodo = document.querySelector(".toDotasks");
 const addSection=document.querySelector(".addNewtask");
 let drag=null;
-// var divs=JSON.parse(localStorage.getItem("divs"))|| [];
+
 
 const sections = document.getElementById("sections");
 var shapes = sections.querySelectorAll("div[class='section']");
-// let el = document.createElement('li');
-// el.className="task";
-// el.textContent="new task";
 window.onload = restoreJason;
 addTaskbtn.addEventListener('click',function(e){
   e.preventDefault();
  var name=Taskinput.value;
  console.log(name);
- if(name!="") {
-//  tasksTodo.insertAdjacentHTML("beforeend",`<li class="task" draggable="true">${name}</li>`);
-// tasksTodo.innerHTML += `<li class="task" draggable="true">${name}</li>`;
-tasksTodo.innerHTML +=`
-<li class="task">
-<p>${name}</p>
+  if (name != "") {
+    // const li = document.createElement("li");
+    // li.innerHTML = `<p>${name}</p>
+    // <div class="icons">
+    //    <i class="fa-sharp fa-solid fa-pencil" ></i>
+    //    <i class="fa-regular fa-trash-can"     ></i>
+    // </div>`;
+ tasksTodo.innerHTML +=`
+ <div class="task">
+ <input type="text" value="${name}" readonly="true"></input>
 <div class="icons">
    <i class="fa-sharp fa-solid fa-pencil" ></i>
    <i class="fa-regular fa-trash-can"     ></i>
 </div>
-</li> 
+</div> 
 `;
-console.log(tasksTodo.innerHTML );
+//     tasksTodo.insertBefore(li,tasksTodo.children[0]);
+// console.log(tasksTodo.innerHTML );
    console.log("new task added");
   
    Taskinput.value = "";
@@ -45,7 +47,8 @@ function dragTasks(){
     task.addEventListener('dragend',function(){
      drag=null;
      task.style.opacity="1";
- });
+    });
+ 
  taskCols= document.querySelectorAll(".task-col");
  taskCols.forEach(taskcol=>{
   taskcol.addEventListener('dragover',function(e){
@@ -53,7 +56,8 @@ function dragTasks(){
   this.style.background="#090";
   this.style.color="#fff";
   });
-  taskcol.addEventListener('dragleave',function(){
+   taskcol.addEventListener('dragleave', function (e) {
+    
     this.style.background="#fff";
     this.style.color="#fff"; 
   })
@@ -62,11 +66,12 @@ function dragTasks(){
   task.style.opacity="1";
   this.style.background="#fff";
    this.style.color = "#fff";
-   makeJson();
+ 
+  //  taskcol.innerHTML = divs[0];
 });
  }); 
 });
-
+makeJson();
 }
 // document.addEventListener('drop', function(event){
 //   event.preventDefault();
@@ -90,11 +95,15 @@ function makeJson() {
 }
 function restoreJason() {
   let divs = JSON.parse(localStorage.getItem("divs"));
-  // var divs = JSON.parse(localStorage.getItem("divs"));
   for(var i = 0; i<shapes.length; i++){
     shapes[i].innerHTML = divs[i];
     console.log(shapes[i]);
 }
-console.log(divs);
+  console.log(divs);
+  dragTasks();
 }
-// restoreJason();
+ 
+
+function removeTask() {
+  
+}
