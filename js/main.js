@@ -1,6 +1,5 @@
-  window.onload = restoreJason;
 const addTaskbtn = document.getElementById("addButton");
-const taskInput=document.getElementById("taskName");
+const Taskinput=document.getElementById("taskName");
 const tasksTodo = document.querySelector(".toDotasks");
 const addSection=document.querySelector(".addNewtask");
 let drag=null;
@@ -8,48 +7,34 @@ let drag=null;
 
 const sections = document.getElementById("sections");
 var shapes = sections.querySelectorAll("div[class='section']");
-
-
-addTaskbtn.addEventListener('click', function (e){
+// let el = document.createElement('li');
+// el.className="task";
+// el.textContent="new task";
+window.onload = restoreJason;
+addTaskbtn.addEventListener('click',function(e){
   e.preventDefault();
-  // makeJson();
-  var name = taskInput.value;
-  console.log(name);
-  if (name == "") {
-      alert("Please add some task!");
-      return false;
-    }
-    
-      //  tasksTodo.insertAdjacentHTML("beforeend",`<li class="task" draggable="true">${name}</li>`);
-      // tasksTodo.innerHTML += `<li class="task" draggable="true">${name}</li>`;
+ var name=Taskinput.value;
+ console.log(name);
+ if(name!="") {
+//  tasksTodo.insertAdjacentHTML("beforeend",`<li class="task" draggable="true">${name}</li>`);
+// tasksTodo.innerHTML += `<li class="task" draggable="true">${name}</li>`;
+tasksTodo.innerHTML +=`
+<li class="task">
+<p>${name}</p>
+<div class="icons">
+   <i class="fa-sharp fa-solid fa-pencil" ></i>
+   <i class="fa-regular fa-trash-can"     ></i>
+</div>
+</li> 
+`;
+console.log(tasksTodo.innerHTML );
+   console.log("new task added");
   
-      // let items = Array.from(JSON.parse(localStorage.getItem("items")));
-      // console.log(items);
-      if (document.querySelector(`input[value="${taskInput.value}"]`))
-       {
-        alert("Task already exist!");
-        taskInput.value = "";
-        return;
-        
-       }
-      // add task to local storage
-  localStorage.setItem("items", JSON.stringify([...JSON.parse(localStorage.getItem("items") || "[]"),
-    { taskInput: taskInput.value }]));
-  makeJson();
-  tasksTodo.innerHTML += `
-    <li class="task">
-      <p>${name}</p>
-      <div class="icons">
-        <i class="fa-sharp fa-solid fa-pencil" ></i>
-        <i class="fa-regular fa-trash-can"     ></i>
-      </div>
-    </li> 
-    `;
-  taskInput.value = ""; 
-    dragTasks();
-  
+   Taskinput.value = "";
+   makeJson(); 
+}
+dragTasks(); 
 });
-
 function dragTasks(){
   let tasks=document.querySelectorAll(".task");
   tasks.forEach(task=>{
@@ -77,72 +62,39 @@ function dragTasks(){
   task.style.opacity="1";
   this.style.background="#fff";
    this.style.color = "#fff";
-  //  localStorage.setItem("items", JSON.stringify([...JSON.parse(localStorage.getItem("items") || "[]"),
-  //    { taskInput: taskInput.value }]));
-   updateItemsjson();
    makeJson();
-   restoreJason();
-
- });
-   
+});
  }); 
-    
-  });
-  
+});
+
 }
-function updateItemsjson(){
-  let items = [];
-  console.log(document.querySelectorAll(".task").length);
-  for(var i=0; i<document.querySelectorAll(".task").length; i++){
-    divs.push(items[i].innerHTML);
-  }
-  localStorage.setItem("items", JSON.stringify(items));
-  
-}
-function restoreItemsjson() {
-  // let taskstodo = document.querySelectorAll(".task");
-  let items = JSON.parse(localStorage.getItem("items"));
-  items.forEach(item => {
-    tasksTodo.innerHTML += `
-    <li class="task">
-      <p>${item.}</p>
-      <div class="icons">
-        <i class="fa-sharp fa-solid fa-pencil" ></i>
-        <i class="fa-regular fa-trash-can"     ></i>
-      </div>
-    </li> 
-    `;
-  })
-  // for(var i = 0; i<taskstodo.length; i++){
-  //  taskstodo[i].innerHTML = items[i];
-  //   console.log(items[i]);
-}
-console.log(divs);
-}
+// document.addEventListener('drop', function(event){
+//   event.preventDefault();
+//   var data = event.dataTransfer.getData("text");
+//   event.target.append(document.getElementById("data"));
+//   localStorage.setItem('section1', JSON.stringify(document.getElementById("toDotasks")));
+//   localStorage.setItem('section2', JSON.stringify(document.getElementById("inProgress")).innerHTML);
+//   localStorage.setItem('section3', JSON.stringify(document.getElementById("completed")));
+// });
+
 
 function makeJson() {
   let divs = [];
   console.log(shapes.length);
   for(var i=0; i<shapes.length; i++){
+    // divs[shapes[i].getAttribute('innerHTML')] = shapes[i].innerHTML;
     divs.push(shapes[i].innerHTML);
   }
   
   localStorage.setItem("divs", JSON.stringify(divs));
-
 }
 function restoreJason() {
-  
   let divs = JSON.parse(localStorage.getItem("divs"));
+  // var divs = JSON.parse(localStorage.getItem("divs"));
   for(var i = 0; i<shapes.length; i++){
     shapes[i].innerHTML = divs[i];
     console.log(shapes[i]);
 }
-  console.log(divs);
-  restoreItemsjson();
+console.log(divs);
 }
-
 // restoreJason();
-
-function loadTodoTasks() {
-  
-}
