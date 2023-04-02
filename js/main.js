@@ -8,7 +8,6 @@ let drag=null;
 
 const sections = document.getElementById("sections");
 var shapes = sections.querySelectorAll("div[class='section']");
-<<<<<<< HEAD
 
 
 addTaskbtn.addEventListener('click', function (e){
@@ -49,35 +48,6 @@ addTaskbtn.addEventListener('click', function (e){
   taskInput.value = ""; 
     dragTasks();
   
-=======
-// let el = document.createElement('li');
-// el.className="task";
-// el.textContent="new task";
-window.onload = restoreJason;
-addTaskbtn.addEventListener('click',function(e){
-  e.preventDefault();
- var name=Taskinput.value;
- console.log(name);
- if(name!="") {
-//  tasksTodo.insertAdjacentHTML("beforeend",`<li class="task" draggable="true">${name}</li>`);
-// tasksTodo.innerHTML += `<li class="task" draggable="true">${name}</li>`;
-tasksTodo.innerHTML +=`
-<li class="task">
-<p>${name}</p>
-<div class="icons">
-   <i class="fa-sharp fa-solid fa-pencil" ></i>
-   <i class="fa-regular fa-trash-can"     ></i>
-</div>
-</li> 
-`;
-console.log(tasksTodo.innerHTML );
-   console.log("new task added");
-  
-   Taskinput.value = "";
-   makeJson(); 
-}
-dragTasks(); 
->>>>>>> efdf12476dd1b2c2f6550a6e24fd0851b1ffb306
 });
 
 function dragTasks(){
@@ -172,10 +142,7 @@ function restoreJason() {
 }
 
 // restoreJason();
-<<<<<<< HEAD
 
 function loadTodoTasks() {
   
 }
-=======
->>>>>>> efdf12476dd1b2c2f6550a6e24fd0851b1ffb306
