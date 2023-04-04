@@ -1,4 +1,4 @@
-Jiconst addTodoTaskbtn = document.getElementById("toDoaddBtn");
+const addTodoTaskbtn = document.getElementById("toDoaddBtn");
 const inProgressAddbtn = document.getElementById("inProgressaddBtn");
 const completedAddBtn = document.getElementById("completedaddBtn");
 
@@ -195,10 +195,15 @@ function restoreJason() {
 //}
   //console.log(divs);
   //dragTasks();
+if(JSON.parse(localStorage.getItem("ToDotasks")) != null) {
 Todotasks=JSON.parse(localStorage.getItem("ToDotasks"));
-Todotasks=JSON.parse(localStorage.getItem("inProgresstasks"))
-Todotasks=JSON.parse(localStorage.getItem("completedtasks"))
-
+}
+if(JSON.parse(localStorage.getItem("inProgresstasks")) != null) {
+inProgresstasks=JSON.parse(localStorage.getItem("inProgresstasks"));
+}
+if(JSON.parse(localStorage.getItem("completedtasks"))
+completedtasks=JSON.parse(localStorage.getItem("completedtasks"));
+}
 }
  
 
