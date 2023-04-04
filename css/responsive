@@ -22,14 +22,7 @@
 /**************************/
 
 @media (max-width: 59em) {
-  .main .itemsbox .item img{
-    height:18rem;
-  }
-  
-  .container{
-    width: 100%;
-  
-  }
+  .
   html{
     font-size:55%;
    } 
@@ -44,7 +37,7 @@
   html{
     font-size:50%;
   }
-  .main .itemsbox{
+  .tasks{
     grid-template-columns: auto auto;
   }
 
@@ -59,17 +52,5 @@
   html{
     font-size:45%;
   }
-  .main .itemsbox .item .links{
-  gap: 0.8rem;
-  grid-template-rows: repeat(2,2.4rem) ;
-
-  }
-  .main .itemsbox .item{
-    height:40rem;
-  }
-  .main .itemsbox .item .links a{
-   width:8rem;
-   font-size: 1.2rem;
-   font-weight: 500;
-  }
+  
 }
