@@ -32,9 +32,11 @@ addTodoTaskbtn.addEventListener('click', function(e) {
        <i class="fa-sharp fa-solid fa-pencil" ></i>
        <i class="fa-regular fa-trash-can"     ></i>
     </div>`;
+    
     tasksTodoSec.appendChild(taskDiv);
-    Taskinput.value = "";
-    makeJson();
+    makeJson(tasksTodoSec);
+    toDoinp.value = "";
+  
   }
   else {
     alert("Add your task name");
@@ -48,7 +50,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
     let name = inprogressinp.value;
     console.log(name);
     if (name != "") {
-      makeJson();
+    
       let taskDiv = document.createElement("div");
       taskDiv.className = "task";
       taskDiv.innerHTML = `
@@ -58,13 +60,14 @@ addTodoTaskbtn.addEventListener('click', function(e) {
          <i class="fa-regular fa-trash-can"     ></i>
       </div>`;
       tasksInProgressSec.appendChild(taskDiv);
-      Taskinput.value = "";
+      makeJson(tasksInProgressSec);
+      inprogressinp.value = "";
       
     }
     else {
       alert("Add your task name");
     }
-    dragTasks(tasksInProgressSec);
+    dragTasks();
   });
 
   //add new task to Completed section
@@ -76,20 +79,20 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       let taskDiv = document.createElement("div");
       taskDiv.className = "task";
       taskDiv.innerHTML = `
-      <input type="text" value="${name}" readonly="true"></input>
+      <input class="inp" type="text" value="${name}" readonly="true"></input>
       <div class="icons">
          <i class="fa-sharp fa-solid fa-pencil" ></i>
          <i class="fa-regular fa-trash-can"     ></i>
       </div>`;
       tasksCompletedSec.appendChild(taskDiv);
-      Taskinput.value = "";
+      completedinp.value = "";
       makeJson();
     }
     else {
       alert("Add your task name");
     }
       tasksCompletedSec.appendChild(taskDiv);
-      // dragTasks();
+       dragTasks(tasksCompletedSec);
   });
 
 
@@ -152,37 +155,45 @@ function makeJson(section) {
   let toDoArr = [];
   let inProgressArr = [];
   let completedArr = [];
-  if (JSON.parse(localStorage.getItem("ToDotasks")) != null) {
-    toDoArr = JSON.parse(localStorage.getItem("notStarted"));
+  if (JSON.parse(localStorage.getItem("ToDotasks")) !== null) {
+    toDoArr = JSON.parse(localStorage.getItem("ToDotasks"));
   }
-  if (JSON.parse(localStorage.getItem("inProgresstasks")) != null) {
-    inProgressArr = JSON.parse(localStorage.getItem("inProgress"));
+  if (JSON.parse(localStorage.getItem("inProgresstasks")) !== null) {
+    inProgressArr = JSON.parse(localStorage.getItem("inProgresstasks"));
   }
-  if (JSON.parse(localStorage.getItem("completedtasks")) != null) {
-    completedArr = JSON.parse(localStorage.getItem("completed"));
+  if (JSON.parse(localStorage.getItem("completedtasks")) !== null) {
+    completedArr = JSON.parse(localStorage.getItem("completedtasks"));
   }
 
-  if (section.className === "task-col toDotasks") {
+  if (section.className=== "toDotasks") {
     let task = section.querySelector("input");
-    if (task && task.textContent.trim().length != "") {
+    if (task && task.textContent.trim().length !== "") {
+      console.log(task.textContent);
       toDoArr.push(task.textContent);
+      
+
     }
+    
+    localStorage.setItem("ToDotasks", JSON.stringify(toDoArr));
+    console.log(toDoArr);
   }
- else if (section.className === "task-col inProgress") {
+
+ else if (section.className === "inProgress") {
     let task = section.querySelector("input");
-    if (task && task.textContent.trim().length!="") {
-     inProgressArr.push(task.textContent)
-    }
+    if (task && task.textContent.trim().length!== "") {
+     inProgressArr.push(task.textContent);
+    } 
+    localStorage.setItem("inProgresstasks", JSON.stringify(inProgressArr));
   }
- else if (section.className === "task-col completed") {
+
+ else if (section.className === "completed") {
     let task = section.querySelector("input");
-    if (task && task.textContent.trim().length != "") {
+    if (task && task.textContent.trim().length !== "") {
       completedArr.push(task.textContent);
-    }
+    }    
+     localStorage.setItem("completedtasks", JSON.stringify(completedArr));
+
   }
-    localStorage.setItem("ToDotasks", JSON.stringify("toDoArr"));
-    localStorage.setItem("inProgresstasks", JSON.stringify("inProgressArr"));
-    localStorage.setItem("completedtasks", JSON.stringify("completedArr"));
   
 
 
@@ -195,29 +206,61 @@ function restoreJason() {
 //}
   //console.log(divs);
   //dragTasks();
-if(JSON.parse(localStorage.getItem("ToDotasks")) != null) {
-Todotasks=JSON.parse(localStorage.getItem("ToDotasks"));
-Todotasks.foreach(item){
+
+let Todotasks=JSON.parse(localStorage.getItem("ToDotasks"));
+let inProgresstasks=JSON.parse(localStorage.getItem("inProgresstasks"));
+let completedtasks=JSON.parse(localStorage.getItem("completedtasks"));
+if(Todotasks!== null){
+Todotasks.forEach((item)=>{
+  if (item){
+    let taskDiv = document.createElement("div");
+    taskDiv.className = "task";
+    taskDiv.innerHTML = `
+    <input class="inp" type="text" value="${item}" readonly="true"></input>
+    <div class="icons">
+       <i class="fa-sharp fa-solid fa-pencil" ></i>
+       <i class="fa-regular fa-trash-can"     ></i>
+    </div>`;
+    tasksTodoSec.appendChild(taskDiv);
+  }
+});
+}
+if(inProgresstasks!==null){
+inProgresstasks.forEach((item)=>{
+  
+  if (item!=null){
+    let taskDiv = document.createElement("div");
+    taskDiv.className = "task";
+    taskDiv.innerHTML = `
+    <input class="inp" type="text" value="${item}" readonly="true"></input>
+    <div class="icons">
+       <i class="fa-sharp fa-solid fa-pencil" ></i>
+       <i class="fa-regular fa-trash-can"     ></i>
+    </div>`;
+   tasksInProgressSec.appendChild(taskDiv);
+  }
+});
+}
+if(completedtasks !== null){
+completedtasks.forEach((item)=>{
+  if (item !=null){
+    let taskDiv = document.createElement("div");
+    taskDiv.className = "task";
+    taskDiv.innerHTML = `
+    <input class="inp" type="text" value="${item}" readonly="true"></input>
+    <div class="icons">
+       <i class="fa-sharp fa-solid fa-pencil" ></i>
+       <i class="fa-regular fa-trash-can"     ></i>
+    </div>`;
+   tasksCompletedSec.appendChild(taskDiv);
+  }
+});
+}
+
 
 }
-}
-if(JSON.parse(localStorage.getItem("inProgresstasks")) != null) {
-inProgresstasks=JSON.parse(localStorage.getItem("inProgresstasks"));
-inProgresstasks.foreach(item){
 
 
-
-}
-}
-if(JSON.parse(localStorage.getItem("completedtasks"))
-completedtasks=JSON.parse(localStorage.getItem("completedtasks"));
-completedtasks.foreach(item){
-
-
-
-}
-}
-}
  
 
 function removeTask() {
