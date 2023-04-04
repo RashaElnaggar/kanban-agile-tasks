@@ -33,9 +33,9 @@ addTodoTaskbtn.addEventListener('click', function(e) {
        <i class="fa-sharp fa-solid fa-pencil" ></i>
        <i class="fa-regular fa-trash-can"     ></i>
     </div>`;
-    
+    makeJson(tasksTodoSec)
     tasksTodoSec.appendChild(taskDiv);
-    makeJson(tasksTodoSec);
+   // makeJson(tasksTodoSec);
     toDoinp.value = "";
   
   }
