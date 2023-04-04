@@ -25,6 +25,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
   console.log(name);
   if (name != "") {
     let taskDiv = document.createElement("div");
+    inputTask = taskDiv.querySelector(".inp");
     taskDiv.className = "task";
     taskDiv.innerHTML = `
     <input type="text" value="${name}" readonly="true"></input>
@@ -41,6 +42,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
   else {
     alert("Add your task name");
   }
+  makeJson(tasksTodoSec);
   dragTasks();
 });
 
@@ -52,6 +54,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
     if (name != "") {
     
       let taskDiv = document.createElement("div");
+      inputTask = taskDiv.querySelector(".inp");
       taskDiv.className = "task";
       taskDiv.innerHTML = `
       <input type="text" value="${name}" readonly="true"></input>
@@ -63,10 +66,12 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       makeJson(tasksInProgressSec);
       inprogressinp.value = "";
       
+
     }
     else {
       alert("Add your task name");
     }
+    makeJson(tasksInProgressSec);
     dragTasks();
   });
 
@@ -74,6 +79,8 @@ addTodoTaskbtn.addEventListener('click', function(e) {
   completedAddBtn.addEventListener('click', function(e) {
     e.preventDefault();
     let name = completedinp.value;
+    inputTask = taskDiv.querySelector(".inp");
+
     console.log(name);
     if (name != "") {
       let taskDiv = document.createElement("div");
@@ -86,13 +93,15 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       </div>`;
       tasksCompletedSec.appendChild(taskDiv);
       completedinp.value = "";
-      makeJson();
+     
+   
     }
     else {
       alert("Add your task name");
     }
-      tasksCompletedSec.appendChild(taskDiv);
-       dragTasks(tasksCompletedSec);
+   
+    makeJson(tasksCompletedSec);
+    dragTasks();
   });
 
 
@@ -126,7 +135,7 @@ function dragTasks(){
   task.style.opacity="1";
   this.style.background="#fff";
    this.style.color = "#fff";
- 
+   makeJson(taskcol);
   //  taskcol.innerHTML = divs[0];
 });
  }); 
@@ -152,46 +161,50 @@ function makeJson(section) {
   // }
   
   // localStorage.setItem("divs", JSON.stringify(divs));
-  let toDoArr = [];
-  let inProgressArr = [];
-  let completedArr = [];
-  if (JSON.parse(localStorage.getItem("ToDotasks")) !== null) {
-    toDoArr = JSON.parse(localStorage.getItem("ToDotasks"));
+  let ToDotasks ;
+  let inProgresstasks;
+  let completedtasks ;
+  if (JSON.parse(localStorage.getItem("ToDotasks")) != null) {
+    ToDotasks = JSON.parse(localStorage.getItem("ToDotasks"));
   }
-  if (JSON.parse(localStorage.getItem("inProgresstasks")) !== null) {
-    inProgressArr = JSON.parse(localStorage.getItem("inProgresstasks"));
+  else
+  ToDotasks = [];
+  if (JSON.parse(localStorage.getItem("inProgresstasks")) != null) {
+    inProgresstasks = JSON.parse(localStorage.getItem("inProgresstasks"));
   }
-  if (JSON.parse(localStorage.getItem("completedtasks")) !== null) {
-    completedArr = JSON.parse(localStorage.getItem("completedtasks"));
+  else
+  inProgresstasks = [];
+  if (JSON.parse(localStorage.getItem("completedtasks")) != null) {
+    completedtasks = JSON.parse(localStorage.getItem("completedtasks"));
   }
+  else
+   completedtasks = [];
 
-  if (section.className=== "toDotasks") {
-    let task = section.querySelector("input");
+  if (section.className === "task-col toDotasks") {
+    let task = section.lastElementChild.querySelector("input");
     if (task && task.textContent.trim().length !== "") {
       console.log(task.textContent);
-      toDoArr.push(task.textContent);
-      
-
+      ToDotasks.push(task.textContent);
     }
-    
-    localStorage.setItem("ToDotasks", JSON.stringify(toDoArr));
-    console.log(toDoArr);
+    console.log(ToDotasks);
+    localStorage.setItem("ToDotasks", JSON.stringify(ToDotasks));
+   
   }
 
- else if (section.className === "inProgress") {
-    let task = section.querySelector("input");
+ else if (section.className === "task-col inProgress") {
+    let task = section.lastElementChild.querySelector("input");
     if (task && task.textContent.trim().length!== "") {
-     inProgressArr.push(task.textContent);
+      inProgresstasks.push(task.textContent);
     } 
-    localStorage.setItem("inProgresstasks", JSON.stringify(inProgressArr));
+    localStorage.setItem("inProgresstasks", JSON.stringify(inProgresstasks));
   }
 
- else if (section.className === "completed") {
-    let task = section.querySelector("input");
+ else if (section.className === "task-col completed") {
+    let task = section.lastElementChild.querySelector("input");
     if (task && task.textContent.trim().length !== "") {
-      completedArr.push(task.textContent);
+      completedtasks.push(task.textContent);
     }    
-     localStorage.setItem("completedtasks", JSON.stringify(completedArr));
+     localStorage.setItem("completedtasks", JSON.stringify(completedtasks));
 
   }
   
@@ -207,10 +220,10 @@ function restoreJason() {
   //console.log(divs);
   //dragTasks();
 
-let Todotasks=JSON.parse(localStorage.getItem("ToDotasks"));
+let ToDotasks=JSON.parse(localStorage.getItem("ToDotasks"));
 let inProgresstasks=JSON.parse(localStorage.getItem("inProgresstasks"));
 let completedtasks=JSON.parse(localStorage.getItem("completedtasks"));
-if(Todotasks!== null){
+if(ToDotasks!== null){
 Todotasks.forEach((item)=>{
   if (item){
     let taskDiv = document.createElement("div");
