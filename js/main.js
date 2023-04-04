@@ -162,14 +162,14 @@ function makeJson(section) {
   // }
   
   // localStorage.setItem("divs", JSON.stringify(divs));
-  let ToDotasks ;
+  let toDotasks ;
   let inProgresstasks;
   let completedtasks ;
   if (JSON.parse(localStorage.getItem("ToDotasks")) != null) {
-    ToDotasks = JSON.parse(localStorage.getItem("ToDotasks"));
+    ToDotasks = JSON.parse(localStorage.getItem("toDotasks"));
   }
   else
-  ToDotasks = [];
+  toDotasks = [];
   if (JSON.parse(localStorage.getItem("inProgresstasks")) != null) {
     inProgresstasks = JSON.parse(localStorage.getItem("inProgresstasks"));
   }
