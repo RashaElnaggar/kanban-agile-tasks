@@ -57,7 +57,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       inputTask = taskDiv.querySelector(".inp");
       taskDiv.className = "task";
       taskDiv.innerHTML = `
-      <input type="text" value="${name}" readonly="true"></input>
+      <input  class="inp"type="text" value="${name}" readonly="true"></input>
       <div class="icons">
          <i class="fa-sharp fa-solid fa-pencil" ></i>
          <i class="fa-regular fa-trash-can"     ></i>
@@ -261,7 +261,7 @@ completedtasks.forEach((item)=>{
     let taskDiv = document.createElement("div");
     taskDiv.className = "task";
     taskDiv.innerHTML = `
-    <input class="inp" type="text" value="${item}.value" readonly="true"></input>
+    <input class="inp" type ="text" value="${item}.value" readonly="true"></input>
     <div class="icons">
        <i class="fa-sharp fa-solid fa-pencil" ></i>
        <i class="fa-regular fa-trash-can"     ></i>
