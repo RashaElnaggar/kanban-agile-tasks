@@ -42,7 +42,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
   else {
     alert("Add your task name");
   }
-  makeJson(tasksTodoSec);
+  //makeJson(tasksTodoSec);
   dragTasks();
 });
 
@@ -71,7 +71,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
     else {
       alert("Add your task name");
     }
-    makeJson(tasksInProgressSec);
+   // makeJson(tasksInProgressSec);
     dragTasks();
   });
 
@@ -92,7 +92,8 @@ addTodoTaskbtn.addEventListener('click', function(e) {
          <i class="fa-regular fa-trash-can"     ></i>
       </div>`;
       tasksCompletedSec.appendChild(taskDiv);
-      completedinp.value = "";
+      makeJson(tasksCompletedSec);
+ completedinp.value = "";
      
    
     }
