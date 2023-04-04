@@ -185,7 +185,7 @@ function makeJson(section) {
     let task = section.lastElementChild.querySelector("input");
     if (task && task.textContent.trim().length !== "") {
       console.log(task.textContent);
-      ToDotasks.push(task.textContent);
+      ToDotasks[0].push(task.textContent);
     }
     console.log(ToDotasks);
     localStorage.setItem("ToDotasks", JSON.stringify(ToDotasks));
