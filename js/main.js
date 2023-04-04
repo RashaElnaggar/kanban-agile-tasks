@@ -93,7 +93,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       </div>`;
       tasksCompletedSec.appendChild(taskDiv);
       makeJson(tasksCompletedSec);
- completedinp.value = "";
+      completedinp.value = "";
      
    
     }
@@ -261,7 +261,7 @@ completedtasks.forEach((item)=>{
     let taskDiv = document.createElement("div");
     taskDiv.className = "task";
     taskDiv.innerHTML = `
-    <input class="inp" type="text" value="${item}" readonly="true"></input>
+    <input class="inp" type="text" value="${item}.value" readonly="true"></input>
     <div class="icons">
        <i class="fa-sharp fa-solid fa-pencil" ></i>
        <i class="fa-regular fa-trash-can"     ></i>
