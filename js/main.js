@@ -1,4 +1,4 @@
-const addTodoTaskbtn = document.getElementById("toDoaddBtn");
+Jiconst addTodoTaskbtn = document.getElementById("toDoaddBtn");
 const inProgressAddbtn = document.getElementById("inProgressaddBtn");
 const completedAddBtn = document.getElementById("completedaddBtn");
 
@@ -48,6 +48,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
     let name = inprogressinp.value;
     console.log(name);
     if (name != "") {
+      makeJson();
       let taskDiv = document.createElement("div");
       taskDiv.className = "task";
       taskDiv.innerHTML = `
@@ -58,7 +59,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       </div>`;
       tasksInProgressSec.appendChild(taskDiv);
       Taskinput.value = "";
-      makeJson();
+      
     }
     else {
       alert("Add your task name");
@@ -127,7 +128,7 @@ function dragTasks(){
 });
  }); 
 });
-makeJson();
+//makeJson();
 }
 // document.addEventListener('drop', function(event){
 //   event.preventDefault();
@@ -151,13 +152,13 @@ function makeJson(section) {
   let toDoArr = [];
   let inProgressArr = [];
   let completedArr = [];
-  if (JSON.parse(localStorage.getItem("notStarted")) != null) {
+  if (JSON.parse(localStorage.getItem("ToDotasks")) != null) {
     toDoArr = JSON.parse(localStorage.getItem("notStarted"));
   }
-  if (JSON.parse(localStorage.getItem("notStarted")) != null) {
+  if (JSON.parse(localStorage.getItem("inProgresstasks")) != null) {
     inProgressArr = JSON.parse(localStorage.getItem("inProgress"));
   }
-  if (JSON.parse(localStorage.getItem("notStarted")) != null) {
+  if (JSON.parse(localStorage.getItem("completedtasks")) != null) {
     completedArr = JSON.parse(localStorage.getItem("completed"));
   }
 
@@ -187,13 +188,17 @@ function makeJson(section) {
 
 }
 function restoreJason() {
-  let divs = JSON.parse(localStorage.getItem("divs"));
-  for(var i = 0; i<shapes.length; i++){
-    shapes[i].innerHTML = divs[i];
-    console.log(shapes[i]);
-}
-  console.log(divs);
-  dragTasks();
+  //let divs = JSON.parse(localStorage.getItem("divs"));
+ // for(var i = 0; i<shapes.length; i++){
+   // shapes[i].innerHTML = divs[i];
+   // console.log(shapes[i]);
+//}
+  //console.log(divs);
+  //dragTasks();
+Todotasks=JSON.parse(localStorage.getItem("ToDotasks"));
+Todotasks=JSON.parse(localStorage.getItem("inProgresstasks"))
+Todotasks=JSON.parse(localStorage.getItem("completedtasks"))
+
 }
  
 
