@@ -28,7 +28,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
     inputTask = taskDiv.querySelector(".inp");
     taskDiv.className = "task";
     taskDiv.innerHTML = `
-    <input type="text" value="${name}" readonly="true"></input>
+    <input  type="text" class="inp" value="${name}" readonly="true"></input>
     <div class="icons">
        <i class="fa-sharp fa-solid fa-pencil" ></i>
        <i class="fa-regular fa-trash-can"     ></i>
@@ -57,7 +57,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       inputTask = taskDiv.querySelector(".inp");
       taskDiv.className = "task";
       taskDiv.innerHTML = `
-      <input  class="inp"type="text" value="${name}" readonly="true"></input>
+      <input  class="inp" type="text" value="${name}" readonly="true"></input>
       <div class="icons">
          <i class="fa-sharp fa-solid fa-pencil" ></i>
          <i class="fa-regular fa-trash-can"     ></i>
