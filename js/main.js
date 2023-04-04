@@ -39,7 +39,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
   else {
     alert("Add your task name");
   }
-  dragTasks(tasksTodoSec);
+  dragTasks();
 });
 
 //add new task to Inprogress section
@@ -167,13 +167,13 @@ function makeJson(section) {
       toDoArr.push(task.textContent);
     }
   }
-  if (section.className === "task-col inProgress") {
+ else if (section.className === "task-col inProgress") {
     let task = section.querySelector("input");
     if (task && task.textContent.trim().length!="") {
      inProgressArr.push(task.textContent)
     }
   }
-  if (section.className === "task-col completed") {
+ else if (section.className === "task-col completed") {
     let task = section.querySelector("input");
     if (task && task.textContent.trim().length != "") {
       completedArr.push(task.textContent);
