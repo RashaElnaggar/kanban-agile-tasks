@@ -1,0 +1,75 @@
+53 sloc)  1.02 KB
+/* BELOW 1344px (Smaller desktops) */
+
+@media (max-width: 84em) {
+
+
+
+
+}
+
+/**************************/
+/* BELOW 1200px (Landscape Tablets) */
+/**************************/
+
+@media (max-width: 75em) {
+
+}
+
+
+/**************************/
+/* BELOW 944px (Tablets) */
+/**************************/
+
+@media (max-width: 59em) {
+  .main .itemsbox .item img{
+    height:18rem;
+  }
+  
+  .container{
+    width: 100%;
+  
+  }
+  html{
+    font-size:55%;
+   } 
+}
+
+
+/**************************/
+/* BELOW 704px (Smaller tablets) */
+/**************************/
+
+@media (max-width: 44em) {
+  html{
+    font-size:50%;
+  }
+  .main .itemsbox{
+    grid-template-columns: auto auto;
+  }
+
+}
+
+/**************************/
+/* BELOW 544px (Phones) */
+/**************************/
+
+@media (max-width: 34em) {
+
+  html{
+    font-size:45%;
+  }
+  .main .itemsbox .item .links{
+  gap: 0.8rem;
+  grid-template-rows: repeat(2,2.4rem) ;
+
+  }
+  .main .itemsbox .item{
+    height:40rem;
+  }
+  .main .itemsbox .item .links a{
+   width:8rem;
+   font-size: 1.2rem;
+   font-weight: 500;
+  }
+}
