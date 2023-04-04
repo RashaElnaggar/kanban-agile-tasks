@@ -100,7 +100,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
       alert("Add your task name");
     }
    
-    makeJson(tasksCompletedSec);
+   // makeJson(tasksCompletedSec);
     dragTasks();
   });
 
