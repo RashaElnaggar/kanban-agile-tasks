@@ -197,12 +197,25 @@ function restoreJason() {
   //dragTasks();
 if(JSON.parse(localStorage.getItem("ToDotasks")) != null) {
 Todotasks=JSON.parse(localStorage.getItem("ToDotasks"));
+Todotasks.foreach(item){
+
+}
 }
 if(JSON.parse(localStorage.getItem("inProgresstasks")) != null) {
 inProgresstasks=JSON.parse(localStorage.getItem("inProgresstasks"));
+inProgresstasks.foreach(item){
+
+
+
+}
 }
 if(JSON.parse(localStorage.getItem("completedtasks"))
 completedtasks=JSON.parse(localStorage.getItem("completedtasks"));
+completedtasks.foreach(item){
+
+
+
+}
 }
 }
  
