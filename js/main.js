@@ -75,12 +75,10 @@ addTodoTaskbtn.addEventListener('click', function(e) {
     dragTasks();
   });
 
-  //add new task to Completed section
+   //add new task to Completed section
   completedAddBtn.addEventListener('click', function(e) {
     e.preventDefault();
     let name = completedinp.value;
-    inputTask = taskDiv.querySelector(".inp");
-
     console.log(name);
     if (name != "") {
       let taskDiv = document.createElement("div");
@@ -92,18 +90,17 @@ addTodoTaskbtn.addEventListener('click', function(e) {
          <i class="fa-regular fa-trash-can"     ></i>
       </div>`;
       tasksCompletedSec.appendChild(taskDiv);
-      makeJson(tasksCompletedSec);
+            makeJson(tasksCompletedSec);
       completedinp.value = "";
-     
-   
+      makeJson();
     }
     else {
       alert("Add your task name");
     }
-   
-   // makeJson(tasksCompletedSec);
-    dragTasks();
+      tasksCompletedSec.appendChild(taskDiv);
+       dragTasks();
   });
+
 
 
 
