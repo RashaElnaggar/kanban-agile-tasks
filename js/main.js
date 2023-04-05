@@ -99,7 +99,7 @@ addTodoTaskbtn.addEventListener('click', function(e) {
     }
       //tasksCompletedSec.appendChild(taskDiv);
       makeJson(tasksCompletedSec);
-       dragTasks(tasksCompletedSec);
+       dragTasks();
   });
 
 
