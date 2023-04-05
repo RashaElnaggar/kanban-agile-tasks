@@ -1,4 +1,3 @@
-53 sloc)  1.02 KB
 /* BELOW 1344px (Smaller desktops) */
 
 @media (max-width: 84em) {
@@ -39,7 +38,13 @@
   }
   .tasks{
     grid-template-columns: auto auto;
+    gap:1.5rem;
+    
   }
+  .addSections{
+    grid-template-columns: 1fr 1fr;
+  }
+
 
 }
 
@@ -58,6 +63,9 @@
 
 }
   .tasks{
+    grid-template-columns: 1fr;
+  }
+  .addSections{
     grid-template-columns: 1fr;
   }
 }

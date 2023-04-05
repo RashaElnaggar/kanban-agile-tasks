@@ -39,6 +39,7 @@ ul{
   grid-template-columns:repeat(3,1fr);
   gap:3rem;
   margin-bottom: 3rem;
+  
 
 }
 .task{
@@ -55,7 +56,7 @@ ul{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
- cursor:crosshair;
+ cursor:move;
 }
  
 
@@ -143,6 +144,9 @@ font-weight: 600;
   color:#fff;
 }
 .section{
+  
+}
+.delete{
   
 }
 .addSections{
