@@ -172,5 +172,13 @@ i:hover{
   flex-direction: row;
   align-items: center;
   justify-content:space-between;
-  width:30%;
+  width:40%;
+}
+button{
+  border:none;
+  width: 2rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

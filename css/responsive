@@ -37,13 +37,11 @@
     font-size:50%;
   }
   .tasks{
-    grid-template-columns: auto auto;
+    grid-template-columns:repeat(2,1fr);
     gap:1.5rem;
     
   }
-  .addSections{
-    grid-template-columns: 1fr 1fr;
-  }
+  
 
 
 }
@@ -63,9 +61,7 @@
 
 }
   .tasks{
-    grid-template-columns: 1fr;
+    grid-template-columns:repeat(1,1fr);
   }
-  .addSections{
-    grid-template-columns: 1fr;
-  }
+
 }
