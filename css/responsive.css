@@ -63,6 +63,7 @@ font-size:2.4rem;
 }
   .container{
    width:100%;
+   margin:0;
 
 }
 
@@ -71,5 +72,8 @@ font-size:2.4rem;
     grid-template-columns:30rem;
      gap:1.6rem;
   }
+  .task{
 
+  
+  flex-direction: row;
 }
