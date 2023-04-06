@@ -55,11 +55,12 @@
   html{
     font-size:45%;
   }
-.container{
- width:100%;
- margin:0;
+  .container{
+   width:100%;
 
 }
+
+
   .tasks{
     grid-template-columns:repeat(1,1fr);
   }
